@@ -22,7 +22,9 @@ const EventCard = ({
 );
 
 EventCard.propTypes = {
-  game: PropTypes.string.isRequired,
+  game: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+  }).isRequired,
   description: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
