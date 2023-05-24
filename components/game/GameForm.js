@@ -23,12 +23,10 @@ const GameForm = ({ user }) => {
   const router = useRouter();
 
   useEffect(() => {
-    // TODO: Get the game types, then set the state
     getGameTypes().then(setGameTypes);
   }, []);
 
   const handleChange = (e) => {
-    // TODO: Complete the onChange function
     const { name, value } = e.target;
     setCurrentGame((prevState) => ({
       ...prevState,
@@ -60,7 +58,6 @@ const GameForm = ({ user }) => {
           <Form.Label>Title</Form.Label>
           <Form.Control name="title" required value={currentGame.title} onChange={handleChange} />
         </Form.Group>
-        {/* TODO: create the rest of the input fields */}
 
         {/* MAKER INPUT */}
         <Form.Group className="mb-3">
