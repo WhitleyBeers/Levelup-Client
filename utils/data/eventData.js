@@ -7,6 +7,13 @@ const getEvents = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSingleEvent = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/events/${id}`)
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
 const createEvent = (event) => new Promise((resolve, reject) => {
   fetch(`${clientCredentials.databaseURL}/events`, {
     method: 'POST',
@@ -19,5 +26,19 @@ const createEvent = (event) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// eslint-disable-next-line import/prefer-default-export
-export { getEvents, createEvent };
+const updateEvent = (eventObj) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/events/${eventObj.id}`, {
+    method: 'PUT',
+    body: JSON.stringify(eventObj),
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  })
+    .then(resolve)
+    .catch(reject);
+});
+
+export {
+  getEvents, createEvent, getSingleEvent, updateEvent,
+};
